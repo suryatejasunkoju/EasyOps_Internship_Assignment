@@ -37,7 +37,7 @@ public class VendorController {
         return new ResponseEntity<>(vendorService.updateVendor(vendorRequest,vendorId), HttpStatus.ACCEPTED);
     }
 
-    @PutMapping("/delete/{vendor_id}")
+    @DeleteMapping("/delete/{vendor_id}")
     public ResponseEntity deleteVendor(@PathVariable("vendor_id")Long vendorId) throws Exception {
         return  new ResponseEntity<>(vendorService.deleteVendorById(vendorId), HttpStatus.ACCEPTED);
     }
