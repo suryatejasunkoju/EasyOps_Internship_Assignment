@@ -1,1 +1,0 @@
-# EasyOps_Internship_Assignment
