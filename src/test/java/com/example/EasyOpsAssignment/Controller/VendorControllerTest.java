@@ -37,14 +37,6 @@ public class VendorControllerTest {
     @Test
     public void addVendorTest() throws Exception {
 
-//        Ticket mockTicket = new Ticket();
-//        mockTicket.setTicketId(1);
-//        mockTicket.setPassengerName("Martin Bingel");
-//        mockTicket.setSourceStation("Kolkata");
-//        mockTicket.setDestStation("Delhi");
-//        mockTicket.setBookingDate(new Date());
-//        mockTicket.setEmail("martin.s2017@gmail.com");
-
         VendorRequest vendorRequest=new VendorRequest();
         vendorRequest.setAddress("h.no:78-2/g, chennai");
         vendorRequest.setCity("chennai");
@@ -55,9 +47,7 @@ public class VendorControllerTest {
         vendorRequest.setPinCode("987654");
 
         String vendorInputInJson=this.mapToJson(vendorRequest);
-//        String inputInJson = this.mapToJson(mockTicket);
 
-//        String URI = "/api/tickets/create";
         String URI="/api/v1/vendor/add";
 
         Vendor vendor=new Vendor();
@@ -70,7 +60,6 @@ public class VendorControllerTest {
         vendor.setPinCode("987654");
 
 
-//        Mockito.when(ticketBookingService.createTicket(Mockito.any(Ticket.class))).thenReturn(mockTicket);
         Mockito.when(vendorService.addVendor(Mockito.any(VendorRequest.class))).thenReturn(String.valueOf(vendor));
 
         RequestBuilder requestBuilder = MockMvcRequestBuilders
@@ -99,13 +88,6 @@ public class VendorControllerTest {
         vendorRequest.setEmail("jagadesh@yahoo.com");
         vendorRequest.setState("Kerala");
         vendorRequest.setPinCode("987654");
-//        Ticket mockTicket = new Ticket();
-//        mockTicket.setTicketId(1);
-//        mockTicket.setPassengerName("Martin Bingel");
-//        mockTicket.setSourceStation("Kolkata");
-//        mockTicket.setDestStation("Delhi");
-//        mockTicket.setBookingDate(new Date());
-//        mockTicket.setEmail("martin.s2017@gmail.com");
 
         Vendor vendor=new Vendor();
         vendor.setVendorAddress("h.no:78-2/g, chennai");
@@ -128,73 +110,8 @@ public class VendorControllerTest {
         String vendorOutputInJson = result.getResponse().getContentAsString();
         String obj = vendorOutputInJson;
         Vendor sample=new ObjectMapper().readValue(vendorOutputInJson, Vendor.class);
-//        MvcResult.getResponse()->MockHttpServletResponse
-        System.out.println("-----------------------------------------------------------------------------------------------");
-        System.out.println("Surya's print :"+sample.toString());
-        System.out.println("-----------------------------------------------------------------------------------------------");
         assertThat(vendorOutputInJson).isEqualTo(expectedJson);
     }
-
-//    @Test
-//    public void testGetAllBookedTickets() throws Exception {
-//
-//        Ticket mockTicket1 = new Ticket();
-//        mockTicket1.setTicketId(1);
-//        mockTicket1.setPassengerName("Martin Bingel");
-//        mockTicket1.setSourceStation("Kolkata");
-//        mockTicket1.setDestStation("Delhi");
-//        mockTicket1.setBookingDate(new Date());
-//        mockTicket1.setEmail("martin.s2017@gmail.com");
-//
-//        Ticket mockTicket2 = new Ticket();
-//        mockTicket2.setPassengerName("Sean Murphy");
-//        mockTicket2.setSourceStation("Kolkata");
-//        mockTicket2.setDestStation("Mumbai");
-//        mockTicket2.setBookingDate(new Date());
-//        mockTicket2.setEmail("sean.s2017@gmail.com");
-//
-//        List<Ticket> ticketList = new ArrayList<>();
-//        ticketList.add(mockTicket1);
-//        ticketList.add(mockTicket2);
-//
-//        Mockito.when(ticketBookingService.getAllBookedTickets()).thenReturn(ticketList);
-//
-//        String URI = "/api/tickets/alltickets";
-//        RequestBuilder requestBuilder = MockMvcRequestBuilders.get(
-//                URI).accept(
-//                MediaType.APPLICATION_JSON);
-//
-//        MvcResult result = mockMvc.perform(requestBuilder).andReturn();
-//
-//        String expectedJson = this.mapToJson(ticketList);
-//        String vendorOutputInJson = result.getResponse().getContentAsString();
-//        assertThat(vendorOutputInJson).isEqualTo(expectedJson);
-//    }
-//
-//    @Test
-//    public void testGetTicketByEmail() throws Exception {
-//        Ticket mockTicket = new Ticket();
-//        mockTicket.setTicketId(1);
-//        mockTicket.setPassengerName("Martin Bingel");
-//        mockTicket.setSourceStation("Kolkata");
-//        mockTicket.setDestStation("Delhi");
-//        mockTicket.setBookingDate(new Date());
-//        mockTicket.setEmail("martin.s2017@gmail.com");
-//
-//        String expectedJson = this.mapToJson(mockTicket);
-//
-//        Mockito.when(ticketBookingService.getTicketByEmail(Mockito.anyString())).thenReturn(mockTicket);
-//
-//        String URI = "/api/tickets/email/martin.s2017@gmail.com";
-//        RequestBuilder requestBuilder = MockMvcRequestBuilders.get(
-//                URI).accept(
-//                MediaType.APPLICATION_JSON);
-//
-//        MvcResult result = mockMvc.perform(requestBuilder).andReturn();
-//        String vendorOutputInJson = result.getResponse().getContentAsString();
-//        assertThat(vendorOutputInJson).isEqualTo(expectedJson);
-//
-//    }
 
     //Mapping an Object into a JSON String. Uses a Jackson ObjectMapper.
     private String mapToJson(Object object) throws JsonProcessingException {
