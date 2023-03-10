@@ -20,21 +20,21 @@ public class VendorController {
     @PostMapping("/add")
     public ResponseEntity addVendor(@Valid @RequestBody VendorRequest vendorRequest){
         //validate all fields here only. And if any rule is not followed then throw an Exception from here itself.
-        return new ResponseEntity<>(vendorService.addVendor(vendorRequest), HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(vendorService.addVendor(vendorRequest), HttpStatus.OK);
     }
 
     @GetMapping("/get/{vendor_id}")
     public ResponseEntity getVendorById(@PathVariable("vendor_id") Long vendorId) throws Exception {
-        return new ResponseEntity<>(vendorService.getVendorById(vendorId), HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(vendorService.getVendorById(vendorId), HttpStatus.OK);
     }
 
     @PutMapping("/update/{vendor_id}")
     public ResponseEntity updateVendor(@Valid @RequestBody VendorRequest vendorRequest, @PathVariable("vendor_id") Long vendorId) throws Exception {
-        return new ResponseEntity<>(vendorService.updateVendor(vendorRequest,vendorId), HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(vendorService.updateVendor(vendorRequest,vendorId), HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{vendor_id}")
     public ResponseEntity deleteVendor(@PathVariable("vendor_id")Long vendorId) throws Exception {
-        return  new ResponseEntity<>(vendorService.deleteVendorById(vendorId), HttpStatus.ACCEPTED);
+        return  new ResponseEntity<>(vendorService.deleteVendorById(vendorId), HttpStatus.OK);
     }
 }
