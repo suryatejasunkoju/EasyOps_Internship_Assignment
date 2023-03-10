@@ -16,11 +16,7 @@ public class VendorController {
 
     @Autowired
     VendorService vendorService;
-
-    @GetMapping("/test")
-    public ResponseEntity test(){
-        return new ResponseEntity<>("Tested Successfully", HttpStatus.ACCEPTED);
-    }
+    
     @PostMapping("/add")
     public ResponseEntity addVendor(@Valid @RequestBody VendorRequest vendorRequest){
         //validate all fields here only. And if any rule is not followed then throw an Exception from here itself.
